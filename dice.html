@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dice</title>
+    <style>
+        .dice, .action{
+            margin: 25px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .die{
+            width: 180px;
+            height: 180px;
+            border: 3px solid black;
+            border-radius: 10px;
+            font-size: 7em;
+            text-align: center;
+        }
+
+        .die span {
+            position: relative;
+            top: 15%;
+            /* transform: translateY(-50%); */
+            }
+
+        .die-unicode{   
+            font-size: 14em;
+        
+        } 
+
+
+
+        #roll{
+            font-size: 2em;
+            color: blue;
+            width: 300px;
+            margin: auto 15px;
+        }
+        #roll:hover{
+            color: green;
+            cursor: pointer;
+        }
+        #roll:active{
+            color: red;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="dice" style="display:none">
+        <div class="die" id="die-one"><span>1</span></div>
+        <div class="die" id="die-two"><span>1</span></div>
+    </div>
+
+
+
+    <div class="action">
+        <button id="roll">Roll the dice</button>
+    </div>
+
+    <div class="dice">
+            <div class="die-unicode" id="dots-one"><span>&#9856;</span></div>
+            <div class="die-unicode" id="dots-two"><span>&#9856;</span></div>
+    </div>
+
+    <script>
+        document.querySelector("#roll").addEventListener("click", rollDice);
+
+       function rollDice(){
+         let dieFace = ["&#9856;","&#9857;","&#9858;","&#9859;", "&#9860;", "&#9861;"]
+         let die1 = Math.floor(Math.random()*6);
+         let die2 = Math.floor(Math.random()*6);
+         document.querySelector("#dots-one span").innerHTML = dieFace[die1];
+         document.querySelector("#dots-two span").innerHTML = dieFace[die2];
+         console.log(die1)
+         return die1;
+       }
+
+        function rollDigitDice(){
+         
+         let die1 = Math.floor(Math.random()*6)+1;
+         let die2 = Math.floor(Math.random()*6)+1;
+         document.querySelector("#die-one span").innerHTML = die1;
+         document.querySelector("#die-two span").innerHTML = die2;
+         console.log(die1)
+         return die1;
+       }
+
+        
+    
+    </script>
+</body>
+</html>
